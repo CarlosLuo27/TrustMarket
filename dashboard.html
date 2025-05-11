@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | TrustMarket</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Transparent Economic Dashboard</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="facts.html">Fact Checks</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Profit Margins by Food Category</h2>
+            <canvas id="marginChart"></canvas>
+        </section>
+
+        <section>
+            <h2>Transportation Costs per kg (CAD)</h2>
+            <canvas id="transportChart"></canvas>
+        </section>
+
+        <section>
+            <h2>Inflation Breakdown by Category (YoY %)</h2>
+            <canvas id="inflationChart"></canvas>
+        </section>
+
+        <section>
+            <h2>Shrinkflation: Package Size Reduction</h2>
+            <canvas id="shrinkflationChart"></canvas>
+        </section>
+
+        <section>
+            <h2>Egg Prices (CAD/dozen)</h2>
+            <canvas id="eggPriceChart"></canvas>
+        </section>
+
+        <section>
+            <h2>Organic vs. Non-Organic Food Prices (CAD)</h2>
+            <canvas id="organicPriceChart"></canvas>
+        </section>
+
+        <script>
+            new Chart(document.getElementById('marginChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Milk', 'Lettuce', 'Chicken', 'Bread'],
+                    datasets: [{
+                        label: 'Profit Margin (%)',
+                        data: [1.8, 1.2, 2.0, 1.6],
+                        backgroundColor: 'rgba(75, 192, 192, 0.6)'
+                    }]
+                },
+                options: { scales: { y: { beginAtZero: true, max: 5 } } }
+            });
+
+            new Chart(document.getElementById('transportChart'), {
+                type: 'line',
+                data: {
+                    labels: ['Milk', 'Lettuce', 'Chicken', 'Bread'],
+                    datasets: [{
+                        label: 'Transportation Cost (CAD/kg)',
+                        data: [0.45, 0.65, 0.80, 0.30],
+                        fill: false,
+                        borderColor: 'rgba(255, 99, 132, 0.7)',
+                        tension: 0.1
+                    }]
+                },
+                options: { scales: { y: { beginAtZero: true } } }
+            });
+
+            new Chart(document.getElementById('inflationChart'), {
+                type: 'pie',
+                data: {
+                    labels: ['Supply Chain', 'Energy', 'Labor Costs', 'Other'],
+                    datasets: [{
+                        label: 'Inflation Contribution',
+                        data: [40, 25, 20, 15],
+                        backgroundColor: [
+                            'rgba(255, 206, 86, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(153, 102, 255, 0.7)'
+                        ]
+                    }]
+                }
+            });
+
+            new Chart(document.getElementById('shrinkflationChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Snack Bar', 'Cereal Box', 'Yogurt Cup'],
+                    datasets: [{
+                        label: 'Old Size (g)',
+                        data: [50, 500, 175],
+                        backgroundColor: 'rgba(54, 162, 235, 0.6)'
+                    }, {
+                        label: 'New Size (g)',
+                        data: [40, 470, 160],
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)'
+                    }]
+                },
+                options: {
+                    scales: { y: { beginAtZero: true } },
+                    plugins: {
+                        tooltip: { mode: 'index', intersect: false }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('eggPriceChart'), {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Egg Price (CAD/dozen)',
+                        data: [3.20, 3.60, 4.00, 4.40, 4.10, 3.90],
+                        borderColor: 'rgba(255, 159, 64, 0.8)',
+                        fill: false,
+                        tension: 0.2
+                    }]
+                },
+                options: { scales: { y: { beginAtZero: false } } }
+            });
+
+            new Chart(document.getElementById('organicPriceChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['Milk', 'Apples', 'Chicken'],
+                    datasets: [{
+                        label: 'Organic Price (CAD)',
+                        data: [6.49, 4.99, 13.99],
+                        backgroundColor: 'rgba(75, 192, 192, 0.6)'
+                    }, {
+                        label: 'Non-Organic Price (CAD)',
+                        data: [4.29, 3.49, 9.99],
+                        backgroundColor: 'rgba(153, 102, 255, 0.6)'
+                    }]
+                },
+                options: { scales: { y: { beginAtZero: true } } }
+            });
+        </script>
+    </main>
+    <footer>
+        <p>&copy; 2025 TrustMarket. All rights reserved.</p>
+    </footer>
+</body>
+</html>
