@@ -40,7 +40,7 @@ nav a {
 /* Chart sizing */
 /* Responsive chart sizing */
 canvas {
-    width: 100%;
+    width: 70%;
     max-width: 1200px;
     height: auto;
     margin: 20px auto;
